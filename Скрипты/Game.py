@@ -25,7 +25,7 @@ pg.image.load( 'задний фон/wallpapers/wallpaper_3.png' )
 
 ]
 
-map_width , map_height = 20_000 , 20_000
+map_width , map_height = 30_000 , 30_000
 map_scale = 1
 map_size = 3
 show_map = 0

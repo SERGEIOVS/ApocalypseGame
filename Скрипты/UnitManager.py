@@ -8,7 +8,7 @@ hero_speed = 3
 hero_health , hero_max_health = 10 , 10
 hero_armor , hero_max_armor = 10 , 10
 current_ammo = 10
-max_ammo = 50
+max_ammo = 30
 hero_gender = 'male'
 herolefthand = 'pistol'
 herorighthand = '0'
@@ -18,11 +18,11 @@ hero_animation = 1
 
 hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
 
-# hero_no_0_0_0_0_pistol_0_stay_left_1.png
+
 
 heroimage = Image.open(hero)
 
-hero_x , hero_y = int(screen_width) / 2  - heroimage.width /2 , int(screen_height)  / 2 - 150
+hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
 hero_image = pg.image.load( hero )
 
