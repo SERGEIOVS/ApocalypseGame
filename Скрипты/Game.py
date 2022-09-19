@@ -15,10 +15,7 @@ pg.init()
 pg.font.init()
 pos = pg.mouse.get_pos()
 
-#os.system('cls||clear')
-
 game_states_list = [ 'main_menu' , 'play' , 'screenshots_menu' , 'achievements_menu' , 'mini_map' , 'saving' , 'loading' ]
-
 
 bg_images = [
 
@@ -59,9 +56,7 @@ def start():
         screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 200 ) )
         screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 250 ) )
 
-
     if game_state == 'play':
-
         mouse_visible = False
         mouse_set_visible = pg.mouse.set_visible( mouse_visible )
 
@@ -73,10 +68,6 @@ def start():
 
         for i in range( len ( buildings_x_file1 ) ) :
             screen.blit( buildings_images_list[ i ] , ( -camera.rect[ 0 ] + int(buildings_x_file1[ i ]) , -camera.rect[ 1 ] + int(buildings_y_file1[ i ] ) ))
-
-        #for i in range( len ( unitslist) ) :
-            #screen.blit( i.image , ( -camera.rect[ 0 ] + int(units_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(units_file1[i].split(',')[1] ) ) )
-            
 
         for i in range(len(items_x_file1 ) ) :
             screen.blit(items_images_list[ i ] , ( -camera.rect[ 0 ] + int(items_x_file1[ i ]) , -camera.rect[ 1 ] + int(items_y_file1[ i ] ) ) ) 
@@ -96,9 +87,6 @@ def start():
 
             for i in range( len( hero_backpack_inventory_items_x_list ) ) :
                 screen.blit ( hero_backpack_inventory_images[ i ] , ( hero_backpack_inventory_items_x_list[ i ] ,  hero_backpack_inventory_items_y_list[ i ] ) )
-        
-        #print(mini_map_surf.get_width() , mini_map_surf.get_height() )
-        
 
         if show_interface == 1:
                 screen.blit( achievements_menu.image , ( achievements_menu.x , achievements_menu.y ) )
@@ -111,10 +99,7 @@ def start():
 
         screen.blit( minimap_icon.image ,  ( 660 , 550 ))
         screen.blit( hero_image , ( hero_x , hero_y ) )
-        
-        #show_buildings = 1
-        #show_items = 1
-        
+
         if show_map == 1:
             mini_map_surf.fill((minimapBGcolor))
 
@@ -127,9 +112,6 @@ def start():
             for i in range( len ( buildings_x_file1 ) ) :
                 if show_buildings == 1:
                     pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
-
-            #for i in range( len ( units_file1 ) ) :
-                #pg.draw.circle(mini_map_surf , colors[3] , (  int(units_file1[i].split(',')[0] ) / (100 * map_scale)  ,  int(units_file1[i].split(',')[1]  ) / (100 * map_scale) ) , 1)
 
             hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 1)
 
@@ -176,35 +158,28 @@ while run :
             pressed = pg.mouse.get_pressed()
             pos = pg.mouse.get_pos()
         
-
         if event.type == pg.MOUSEBUTTONDOWN :
             if event.button == 1 and int(current_ammo) > 0 and game_state == 'play' and pos[0] >= int(screen_width) / 2:
-
                 current_ammo-=1 ; gun_shot = pg.mixer.Sound( 'Звуки/pistol_shot.wav' ) ; gun_shot.play()
-                
                 show_health = big_font.render( str( hero_health )  + "/" + str( hero_max_health ) , False , colors[2] )
                 show_hero_armor = big_font.render( str( hero_armor ) + "/" +  str( hero_max_armor ) , False , colors[2] )
                 current_ammo_counter = big_font.render( str( current_ammo ) + "/" + str( max_ammo ) , False , colors[2] )
-
                 hero_status = 'attack' ; hero_turn = 'right'
                 hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
                 hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
                 heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
                 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
             
-
             if event.button == 1 and int(current_ammo) > 0 and game_state == 'play' and pos[0] <= int(screen_width) / 2:
                 current_ammo-=1 ; gun_shot = pg.mixer.Sound( 'Звуки/pistol_shot.wav' ) ; gun_shot.play()
                 show_health = big_font.render( str( hero_health )  + "/" + str( hero_max_health ) , False , colors[2] )
                 show_hero_armor = big_font.render( str( hero_armor ) + "/" +  str( hero_max_armor ) , False , colors[2] )
                 current_ammo_counter = big_font.render( str( current_ammo ) + "/" + str( max_ammo ) , False , colors[2] )
-
                 hero_status = 'attack' ; hero_turn = 'left'
                 hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
                 hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
                 heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
                 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
-
 
             if event.button == 1 and int(current_ammo) <= 0 and game_state == 'play':
                 current_ammo = 0 ; current_ammo_counter = big_font.render( str( current_ammo ) + '/' + str( max_ammo ) , False , colors[2] ) 
@@ -222,11 +197,9 @@ while run :
         hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
         heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
-        #hero_animation -= 1 ; print(hero_animation)
 
     if keys[pg.K_a] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[0] >= 0 :
         hero_status = 'run' ; hero_turn = 'left'
-        #hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
         vector[ 0 ] -= hero_speed
         hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
         heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
@@ -246,30 +219,17 @@ while run :
 
     if keys[pg.K_d] and game_state == 'play' and camera.rect[0] <= 12_000:
         hero_status = 'run' ; hero_turn = 'right'
-
         vector[ 0 ] += hero_speed
-        
         hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-        
         heroimage = Image.open('персонажи/герой/' + str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
-        
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width /2 , int(screen_height)  / 2 - heroimage.height / 2
-
-        #hero_animation +=1 ; print(hero_animation)
-
 
     if keys[pg.K_d] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[0] <= 12_000 :
         hero_status = 'run' ; hero_turn = 'right'
-
         vector[ 0 ] += hero_speed
-        
         hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-        
         heroimage = Image.open('персонажи/герой/' + str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
-        
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width /2 , int(screen_height)  / 2 - heroimage.height / 2
-
-
 
     if not( herojump ) :
         if keys[pg.K_w] and game_state == 'play' and camera.rect[1] >= 0:
@@ -283,7 +243,6 @@ while run :
             heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
             hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
-
         if keys[pg.K_SPACE] and game_state == 'play':
             herojump = True #можно прыгать
 
@@ -292,9 +251,7 @@ while run :
         if vector != [ 0 , 0 ] and game_state == 'play':
             camera.move( vector )
 
-
     else:
-
         if herojumpcounter >= -10 :
 
             if herojumpcounter < 0 :
@@ -304,11 +261,9 @@ while run :
                 hero_y-= ( herojumpcounter ** 2 ) / 2
             herojumpcounter -= 1
 
-
         else:
             herojump = False
             herojumpcounter = 10
-
 
     if keys [pg.K_r]and game_state == 'play':
         hero_status = 'reload'
@@ -316,12 +271,8 @@ while run :
             reloadsound = pg.mixer.Sound( 'Звуки/reload.wav' ) ; reloadsound.play()
             current_ammo = 10 ; current_ammo_counter = big_font.render( str( current_ammo ) + '/' + str( max_ammo ) , False , colors[2] )
 
-
-
     if keys [pg.K_F5] :
         make_screenshot() ; logging.info( msg = 'SCREENSHOT SAVED!')
-
-
 
     if keys [pg.K_F12] :
         camerafilemode = 'w'
@@ -349,20 +300,29 @@ while run :
     if keys [pg.K_DOWN] :
         mini_map_surf.set_colorkey(minimapBGcolor)
 
-    if keys [pg.K_KP_1] :
+    if keys [pg.K_KP_7] :
         minimap_location = 'left_up'
         if minimap_location == 'left_up':
             minimap_x = 0
             minimap_y = 0
         
-        #print(minimap_x , minimap_y)
-    
-
-    if keys [pg.K_KP_3] :
+    if keys [pg.K_KP_9] :
         minimap_location = 'right_up'
         if minimap_location == 'right_up':
             minimap_x = int(screen_width) - int(screen_width) / 3
             minimap_y = 0
+    
+    if keys [pg.K_KP_3] :
+        minimap_location = 'right_down'
+        if minimap_location == 'right_down':
+            minimap_x = int(screen_width) - int(screen_width) / 3
+            minimap_y = int(screen_height) - int(screen_height) / 3
+    
+    if keys [pg.K_KP_1] :
+        minimap_location = 'left_down'
+        if minimap_location == 'left_down':
+            minimap_x = 0
+            minimap_y = int(screen_height) - int(screen_height) / 3
     
     if keys [pg.K_KP_PLUS] and map_scale :
         mini_map_surf.fill((minimapBGcolor))
@@ -377,15 +337,10 @@ while run :
             if show_buildings == 1:
                 pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
 
-            #for i in range( len ( units_file1 ) ) :
-                #pg.draw.circle(mini_map_surf , colors[3] , (  int(units_file1[i].split(',')[0] ) / (100 * map_scale)  ,  int(units_file1[i].split(',')[1]  ) / (100 * map_scale) ) , 1)
-
         hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 1)
-
         pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
-        print('map_scale' , map_scale)
 
-    
+
     if keys [pg.K_KP_MINUS] and map_scale >= 0 :
         mini_map_surf.fill((minimapBGcolor))
         map_scale += 0.1
@@ -399,32 +354,14 @@ while run :
             if show_buildings == 1:
                 pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
 
-            #for i in range( len ( units_file1 ) ) :
-                #pg.draw.circle(mini_map_surf , colors[3] , (  int(units_file1[i].split(',')[0] ) / (100 * map_scale)  ,  int(units_file1[i].split(',')[1]  ) / (100 * map_scale) ) , 1)
-
         hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 1)
-
         pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
-        print('map_scale' , map_scale)
-        #print(minimap_x , minimap_y)
-
-        
 
     if keys [pg.K_ESCAPE]  and open_backpack == 1:
         open_backpack  = 0
     
-
     if keys [pg.K_0] :
         pg.mixer.music.play()
-        
-
-    #if keys [pg.K_F9] :
-        #unitsfilemode = 'w'
-        #units_file = open(units_filename ,unitsfilemode)
-        #for i in range(len(units_file1)):
-        #    units_file.write( str(int(units_file1[i].split(',')[0] ) )+ 100 + ',' + str(int(units_file1[i].split(',')[1] ) ) )
-        #    units_file.close()
-            
 
     screen.fill( BGcolor )
 
