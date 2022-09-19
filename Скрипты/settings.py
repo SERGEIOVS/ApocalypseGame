@@ -35,9 +35,7 @@ Captions = ['Welcome to the Crystal city!']
 
 pg.display.set_caption(Captions[0] )
 
-Fontsizes = [ 25 , 15 ]
 
-#Показывать  стандартный курсор или или нет
 
 class interface :
     def __init__( self, x , y , width , height , image ) :
@@ -48,6 +46,10 @@ class interface :
         self.image = image
 
 cells_num = 10
+
+radiation_level = 0
+
+max_radiation_level = 100
 
 beltinventorycell = interface( int(screen_width  )/ 2 - cells_num * 50 / 2, int(screen_height  )- 50, 50 , 50 , pg.image.load( 'интерфейс/иконки/inventory_cell.png' ) )
 
@@ -71,11 +73,11 @@ armor_icon = interface( 0 , int(screen_height) - 25 , 25 , 25 , pg.image.load( '
 
 current_ammo_icon = interface(0 , int(screen_height) - 75 , 34 , 50 , pg.image.load( 'интерфейс/иконки/pistol_ammo_icon.png' ) )
 
-button = interface(2100,210,200,50,pg.image.load( 'интерфейс/иконки/button.png' ) )
+button = interface(2100 , 210 , 200 , 50 , pg.image.load( 'интерфейс/иконки/button.png' ) )
 
-MusicIcon = interface(0,100,30,30,pg.image.load( 'интерфейс/иконки/MusicIcon.png' ) )
-
-craft_icon = interface(2100,125,20,30,pg.image.load( 'интерфейс/иконки/craft_icon.png' ) )
+MusicIcon = interface(0 , 100 , 30 , 30 , pg.image.load( 'интерфейс/иконки/MusicIcon.png' ) )
+ 
+craft_icon = interface( 2100 , 125 , 20 , 30 , pg.image.load( 'интерфейс/иконки/craft_icon.png' ) )
 
 energy_icon = interface( 200 , beltinventorycell.y , 11 , 26 , pg.image.load( 'интерфейс/иконки/energy_icon.png' ) )
 
@@ -88,6 +90,8 @@ cancel_icon = interface( minimap_menu.x , minimap_menu.y + 25 , 20 , 20 , pg.ima
 cancel_icon1 = interface( achievements_menu.x + achievements_menu.width - 20 , minimap_menu.y + 25 , 20 , 20 , pg.image.load( 'интерфейс/иконки/cancel_icon.png' ) )
 
 minimap_icon = interface( int(screen_width) - 710 , 1030 , 50 , 50 , pg.image.load( 'интерфейс/иконки/minimap_icon.png' ) )
+
+radiation_icon = interface(0 , 1030 , 50 , 50 , pg.image.load( 'интерфейс/иконки/bio_danger_icon_green.png' ) )
 
 Icons_list = [ 
 
@@ -128,22 +132,16 @@ if minimap_location == 'left_up':
 class cam :
 
     def __init__( self , x , y ) :
-        self.rect = pg.Rect( int(minimap_x) , int(minimap_y) , int(screen_width) / 3 , int(screen_height) / 3 )
-        
-
+        self.rect = pg.Rect( int(camera_x) , int(camera_y) , int(screen_width) / 3 , int(screen_height) / 3 )
 
     def move( self , vector ) :
         self.rect[ 0 ] += vector[ 0 ]
         self.rect[ 1 ] += vector[ 1 ]
 
 camera = cam( 0 , 0 )
-print('cam_0' , camera.rect[0] , 'cam_1' , camera.rect[1])
-
 vector = [ 0 , 0 ]
 
-
 pistolmagazine_capacity = 30
-
 pistolmax_magazine_capacity = 300
 
 hero_belt_inventory_cells = []
@@ -168,7 +166,11 @@ hero_belt_inventory = []
 
 hero_belt_inventory_items_x_list = [
 
-int(screen_width) / 2 -cells_num * 50 / 2 + 20]
+int(screen_width) / 2 -cells_num * 50 / 2 + 20,
+int(screen_width) / 2 -cells_num * 50 / 2 + 60,
+int(screen_width) / 2 -cells_num * 50 / 2 + 110
+
+]
 
 hero_belt_inventory_items_y_list = []
 

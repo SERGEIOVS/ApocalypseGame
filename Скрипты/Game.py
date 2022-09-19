@@ -27,6 +27,7 @@ pg.image.load( 'задний фон/wallpapers/wallpaper_3.png' )
 
 map_width , map_height = 20_000 , 20_000
 map_scale = 1
+map_size = 3
 show_map = 0
 show_units = 0
 show_buildings = 1
@@ -37,7 +38,7 @@ game_state = game_states_list[0]
 bg_image_num = 2
 bg_image = bg_images[ random.randint( 0 , len(bg_images) - 1 ) ]
 
-mini_map_surf = pg.Surface(( int(screen_width) / 3 , int(screen_height) / 3 ))
+mini_map_surf = pg.Surface(( int(screen_width) / map_size , int(screen_height) / map_size ))
 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
 def make_screenshot() :
@@ -75,13 +76,15 @@ def start():
         for i in range( len ( traps_x_file1 ) ) :
             screen.blit( traps_images_list[i] , ( -camera.rect[ 0 ] + int(traps_x_file1[ i ] ) , -camera.rect[ 1 ] + int(traps_x_file1[ i ] )  ) )  
 
-        for i in range( len ( hero_belt_inventory_cells_x_list ) ) : 
-            screen.blit ( hero_belt_inventory_cells_images[ i ] , ( hero_belt_inventory_cells_x_list[ i ] ,  hero_belt_inventory_cells_y_list[ i ] ) )
 
-        for i in range( len ( hero_belt_inventory_items_x_list ) ) :
-            screen.blit ( hero_belt_inventory_images[ i ] , ( hero_belt_inventory_items_x_list[ i ] ,  hero_belt_inventory_items_y_list[ i ] ) )
 
         if open_backpack == 1:
+            for i in range( len ( hero_belt_inventory_cells_x_list ) ) : 
+                screen.blit ( hero_belt_inventory_cells_images[ i ] , ( hero_belt_inventory_cells_x_list[ i ] ,  hero_belt_inventory_cells_y_list[ i ] ) )
+
+            for i in range( len ( hero_belt_inventory_items_x_list ) ) :
+                screen.blit ( hero_belt_inventory_images[ i ] , ( hero_belt_inventory_items_x_list[ i ] ,  hero_belt_inventory_items_y_list[ i ] ) )
+
             for i in range( len ( hero_backpack_inventory_cells_x_list ) ) :
                 screen.blit ( hero_backpack_inventory_cells_images[ i ] , ( hero_backpack_inventory_cells_x_list[ i ] ,  hero_backpack_inventory_cells_y_list[ i ] ) )
 
@@ -96,8 +99,10 @@ def start():
                 screen.blit( show_health , ( health_icon.x + health_icon.width , beltinventorycell.y ) )
                 screen.blit( current_ammo_icon.image , (current_ammo_icon.x , current_ammo_icon.y ) )
                 screen.blit( current_ammo_counter , ( current_ammo_icon.x + current_ammo_icon.width , current_ammo_icon.y ) )
+                screen.blit( minimap_icon.image ,  ( 660 , 550 ))
+                screen.blit( radiation_icon.image , ( 0 , 500 ) )
+                screen.blit( show_radiation , ( 30 , 500 ) )
 
-        screen.blit( minimap_icon.image ,  ( 660 , 550 ))
         screen.blit( hero_image , ( hero_x , hero_y ) )
 
         if show_map == 1:
@@ -286,19 +291,22 @@ while run :
 
     if keys [pg.K_p] :
         game_state = 'play'
+
+    if keys [pg.K_b] :
+        open_backpack = 1
+
+    if keys [pg.K_b]  and keys[pg.K_LSHIFT] :
+        open_backpack = 0
     
-    if keys [pg.K_TAB] :
+    if keys [pg.K_ESCAPE] :
         bg_images[ random.randint( 0 , len(bg_images) - 1 ) ]
         game_state = 'main_menu'
 
-    if keys [pg.K_m] :
+    if keys [pg.K_UP] :
         show_map = 1
     
-    if keys [pg.K_n] :
-        show_map = 0
-
     if keys [pg.K_DOWN] :
-        mini_map_surf.set_colorkey(minimapBGcolor)
+        show_map = 0
 
     if keys [pg.K_KP_7] :
         minimap_location = 'left_up'
@@ -323,8 +331,8 @@ while run :
         if minimap_location == 'left_down':
             minimap_x = 0
             minimap_y = int(screen_height) - int(screen_height) / 3
-    
-    if keys [pg.K_KP_PLUS] and map_scale :
+
+    if keys [pg.K_KP_PLUS]:
         mini_map_surf.fill((minimapBGcolor))
         map_scale -= 0.1
         mini_map_surf.blit(cancel_icon.image , ( int(screen_width) / 3 - 25 , 0 ) )
@@ -341,7 +349,7 @@ while run :
         pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
 
 
-    if keys [pg.K_KP_MINUS] and map_scale >= 0 :
+    if keys [pg.K_KP_MINUS]:
         mini_map_surf.fill((minimapBGcolor))
         map_scale += 0.1
         mini_map_surf.blit(cancel_icon.image , ( int(screen_width) / 3 - 25 , 0 ) )
