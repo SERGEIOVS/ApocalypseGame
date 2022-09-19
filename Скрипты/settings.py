@@ -13,14 +13,14 @@ time_units = [ d1.hour , d1.minute ]
 
 current_time_unit = time_units[1] 
 
-screenfilename ='txt/coords/screen.txt'
+screenfilename ='txt/screen.txt'
 screenfilemode = 'r'
 screenfile = open (screenfilename , screenfilemode)
 screenfile1 =screenfile.readlines()
 
 for i in screenfile1:
     screen_width , screen_height = i.split(',')[0] , i.split(',')[1]
-
+    camera_x , camera_y = i.split(',')[2] , i.split(',')[3]
 screen = pg.display.set_mode( (int( screen_width) , int(screen_height ) ) )
 
 colors = [ ( 0 , 0 , 255 ) , ( 0 , 0 , 0 ) , (250 , 0 , 0)  , (255 , 255 , 255) , (45 , 45 , 45 ) ]
@@ -57,10 +57,6 @@ backpackinventorycell = interface( 710 , 300 , 50 , 50 , pg.image.load( 'инт�
 
 currentinventorycell = interface( int(screen_width) / 2 -cells_num * 25 , beltinventorycell.y , 50 , 50 , pg.image.load( 'интерфейс/иконки/current_inventory_cell.png' ) )
 
-achievements_menu = interface( 2000 , 100 , 300 , 500 , pg.image.load( 'интерфейс/иконки/achievements_menu.png' ) )
-
-minimap_menu = interface(2000 , 0 , 1500 , 1000 , pg.image.load( 'интерфейс/иконки/mini_map1.png' ) )
-
 cursor_icon = interface( 0 , 0 , 10 , 10 , pg.image.load( 'интерфейс/иконки/crosshair.png' ) )
 
 clock_icon = interface( 900 , 0 , 30 , 30 , pg.image.load( 'интерфейс/иконки/clock_icon.png' ) )
@@ -81,13 +77,13 @@ craft_icon = interface( 2100 , 125 , 20 , 30 , pg.image.load( 'интерфей�
 
 energy_icon = interface( 200 , beltinventorycell.y , 11 , 26 , pg.image.load( 'интерфейс/иконки/energy_icon.png' ) )
 
-left_pointer = interface( achievements_menu.x + 50 , achievements_menu.y + 100 ,20 , 20 , pg.image.load( 'интерфейс/иконки/pointer_left.png' ) )
+#left_pointer = interface( achievements_menu.x + 50 , achievements_menu.y + 100 ,20 , 20 , pg.image.load( 'интерфейс/иконки/pointer_left.png' ) )
 
-right_pointer = interface(achievements_menu.x + 200 , achievements_menu.y + 100 , 20 , 20 , pg.image.load( 'интерфейс/иконки/pointer_right.png' ) )
+#right_pointer = interface(achievements_menu.x + 200 , achievements_menu.y + 100 , 20 , 20 , pg.image.load( 'интерфейс/иконки/pointer_right.png' ) )
 
-cancel_icon = interface( minimap_menu.x , minimap_menu.y + 25 , 20 , 20 , pg.image.load( 'интерфейс/иконки/cancel_icon.png' ) )
+cancel_icon = interface(0 , 25 , 20 , 20 , pg.image.load( 'интерфейс/иконки/cancel_icon.png' ) )
 
-cancel_icon1 = interface( achievements_menu.x + achievements_menu.width - 20 , minimap_menu.y + 25 , 20 , 20 , pg.image.load( 'интерфейс/иконки/cancel_icon.png' ) )
+#cancel_icon1 = interface( achievements_menu.x + achievements_menu.width - 20 , minimap_menu.y + 25 , 20 , 20 , pg.image.load( 'интерфейс/иконки/cancel_icon.png' ) )
 
 minimap_icon = interface( int(screen_width) - 710 , 1030 , 50 , 50 , pg.image.load( 'интерфейс/иконки/minimap_icon.png' ) )
 
@@ -117,8 +113,8 @@ camera_file = open (camera_filename , camerafilemode)
 
 camera_filename1 = camera_file.readlines()
 
-for i in camera_filename1:
-    camera_x , camera_y = i.split(',')[0] , i.split(',')[1]
+#for i in camera_filename1:
+    
 
 minimap_location = 'right_up'
 minimap_x = 0
