@@ -6,10 +6,6 @@ import pygame as pg , datetime , time , random , math , sys , pyautogui , pickle
 from settings import * ; from MapController import * ; from BuildingsManager import * ; from UnitManager import * ; from Items import * ; from traps import * ;
 from SpawnFile import *  ; from VihiclesManager import * ; from PathManager import * ; from musicManager import * ;
 
-logpath = 'logs/info_log.txt'
-loglevel = logging.INFO
-logformat = ' %(asctime)s - %(levelname)s - %(message)s '
-logging.basicConfig(filename =  logpath , level = loglevel , format = logformat)    #отключить протоколирование - logging.disable()
 
 pg.init()
 pg.font.init()
@@ -19,9 +15,9 @@ game_states_list = [ 'main_menu' , 'play' , 'screenshots_menu' , 'achievements_m
 
 bg_images = [
 
-pg.image.load( 'задний фон/wallpapers/wallpaper_1.png' ) , pg.image.load( 'задний фон/wallpapers/wallpaper_2.png' ) ,
+pg.image.load( 'wallpapers/wallpaper_1.png' ) , pg.image.load( 'wallpapers/wallpaper_2.png' ) ,
 
-pg.image.load( 'задний фон/wallpapers/wallpaper_3.png' )
+pg.image.load( 'wallpapers/wallpaper_3.png' )
 
 ]
 
@@ -35,8 +31,9 @@ show_items = 1
 show_interface = 1
 open_backpack = 0
 game_state = game_states_list[0]
-bg_image_num = 2
-bg_image = bg_images[ random.randint( 0 , len(bg_images) - 1 ) ]
+bg_num = 2
+wallpapers_dir = os.listdir('wallpapers/')
+wallpaper = wallpapers_dir[bg_num]
 
 mini_map_surf = pg.Surface(( int(screen_width) / map_size , int(screen_height) / map_size ))
 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
@@ -50,7 +47,7 @@ def start():
         mouse_visible = False
         mouse_set_visible = pg.mouse.set_visible( mouse_visible )
         
-        screen.blit( bg_image ,      ( 0 , 0 ) )
+        #screen.blit( wallpaper[0] ,      ( 0 , 0 ) )
         screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 50 ) )
         screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 100 ) )
         screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 150 ) )
@@ -92,7 +89,7 @@ def start():
                 screen.blit ( hero_backpack_inventory_images[ i ] , ( hero_backpack_inventory_items_x_list[ i ] ,  hero_backpack_inventory_items_y_list[ i ] ) )
 
         if show_interface == 1:
-                screen.blit( achievements_menu.image , ( achievements_menu.x , achievements_menu.y ) )
+                #screen.blit( achievements_menu.image , ( achievements_menu.x , achievements_menu.y ) )
                 screen.blit( armor_icon.image , ( armor_icon.x , armor_icon.y ) )
                 screen.blit( show_hero_armor , (armor_icon.x + armor_icon.width, armor_icon.y ) )
                 screen.blit( health_icon.image , (health_icon.x, health_icon.y ) )
@@ -281,13 +278,15 @@ while run :
 
     if keys [pg.K_F12] :
         camerafilemode = 'w'
-        camera_file = open (camera_filename , camerafilemode)
-        camera_file.write( str(camera.rect[0]) + ',' + str(camera.rect[1])  ) ; camera_file.close()
+        camera_file = open (screenfilename , camerafilemode)
+        camera_file.write( str(screen_width) + ',' + str(screen_height) + ',' + str(camera.rect[0]) + ',' + str(camera.rect[1])  )
+        camera_file.close()
         logging.info(msg = 'GAME SAVED!' ) ; pg.quit() ; logging.info(msg = 'QUIT GAME!' )
     
-    if keys [pg.K_F1] :
-        camerafilemode = 'w' ; camera_file = open (camera_filename , camerafilemode)
-        camera_file.write( str(camera.rect[0]) + ',' + str(camera.rect[1])  ) ; camera_file.close() ; logging.info(msg = 'GAME SAVED!' )
+    if keys [pg.K_F9] :
+        screenfilemode = 'w' ; screenfile = open (screenfilename , screenfilemode)
+        screenfile.write( str(screen_width) + ',' + str(screen_height) + ',' + str(camera.rect[0]) + ',' + str(camera.rect[1])  )
+        camera_file.close() ; logging.info(msg = 'GAME SAVED!' )
 
     if keys [pg.K_p] :
         game_state = 'play'

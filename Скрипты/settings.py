@@ -19,8 +19,8 @@ screenfile = open (screenfilename , screenfilemode)
 screenfile1 =screenfile.readlines()
 
 for i in screenfile1:
-    screen_width , screen_height = i.split(',')[0] , i.split(',')[1]
-    camera_x , camera_y = i.split(',')[2] , i.split(',')[3]
+    screen_width , screen_height , camera_x , camera_y = i.split(',')[0] , i.split(',')[1] , i.split(',')[2] , i.split(',')[3]
+    
 screen = pg.display.set_mode( (int( screen_width) , int(screen_height ) ) )
 
 colors = [ ( 0 , 0 , 255 ) , ( 0 , 0 , 0 ) , (250 , 0 , 0)  , (255 , 255 , 255) , (45 , 45 , 45 ) ]
@@ -104,17 +104,6 @@ pg.display.set_icon(pg.image.load('интерфейс/иконки/Game_icon.png
 d1 = datetime.datetime.today()
 
 d1 += datetime.timedelta( hours = 0 )
-
-camera_filename ='txt/camera.txt'
-
-camerafilemode = 'r'
-
-camera_file = open (camera_filename , camerafilemode)
-
-camera_filename1 = camera_file.readlines()
-
-#for i in camera_filename1:
-    
 
 minimap_location = 'right_up'
 minimap_x = 0
