@@ -114,8 +114,8 @@ def start():
             for i in range( len ( buildings_x_file1 ) ) :
                 if show_buildings == 1:
                     pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
-
-            hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 1)
+            marker = pg.draw.circle(mini_map_surf , ( 255 , 0 , 0 ) , (100 , 100 ) , 4)
+            hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , int(map_scale))
 
             pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
             
@@ -167,9 +167,10 @@ while run :
                 show_hero_armor = big_font.render( str( hero_armor ) + "/" +  str( hero_max_armor ) , False , colors[2] )
                 current_ammo_counter = big_font.render( str( current_ammo ) + "/" + str( max_ammo ) , False , colors[2] )
                 hero_status = 'attack' ; hero_turn = 'right'
-                hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
-                hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-                heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+                #hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+                hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_' + str(hero_head)  + '_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+                hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
+                heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
                 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
             
             if event.button == 1 and int(current_ammo) > 0 and game_state == 'play' and pos[0] <= int(screen_width) / 2:
@@ -178,9 +179,10 @@ while run :
                 show_hero_armor = big_font.render( str( hero_armor ) + "/" +  str( hero_max_armor ) , False , colors[2] )
                 current_ammo_counter = big_font.render( str( current_ammo ) + "/" + str( max_ammo ) , False , colors[2] )
                 hero_status = 'attack' ; hero_turn = 'left'
-                hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
-                hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-                heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+                #hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+                hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+                hero_image =  pg.image.load('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' +'_' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
+                heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' +'_' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
                 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
             if event.button == 1 and int(current_ammo) <= 0 and game_state == 'play':
@@ -194,55 +196,62 @@ while run :
 
     if keys[pg.K_a] and game_state == 'play' and camera.rect[0] >= 0:
         hero_status = 'run' ; hero_turn = 'left'
-        hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+        #hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+        hero = hero
         vector[ 0 ] -= hero_speed
-        hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-        heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+        hero_image =  pg.image.load( hero )
+        heroimage = Image.open(hero)
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if keys[pg.K_a] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[0] >= 0 :
         hero_status = 'run' ; hero_turn = 'left'
+        
         vector[ 0 ] -= hero_speed
-        hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-        heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
-        hero_x , hero_y = int(screen_width) / 2  - heroimage.width /2 , int(screen_height)  / 2 - heroimage.height / 2
+        hero_image =  pg.image.load( hero )
+        heroimage = Image.open(hero)
+        hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if keys[pg.K_w] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[1] >= 0:
         vector[ 1 ] -= hero_speed
-        hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-        heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
-        hero_x , hero_y = int(screen_width) / 2  - heroimage.width /2 , int(screen_height)  / 2 - heroimage.height / 2
+        hero_image =  pg.image.load( hero )
+        heroimage = Image.open( hero )
+        hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if keys[pg.K_s] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[1] >= 0 :
         vector[ 1 ] += hero_speed
-        hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-        heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
-        hero_x , hero_y = int(screen_width) / 2  - heroimage.width /2 , int(screen_height)  / 2 - heroimage.height / 2
+        hero_image =  pg.image.load( hero )
+        heroimage = Image.open(hero)
+        hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if keys[pg.K_d] and game_state == 'play' and camera.rect[0] <= 12_000:
         hero_status = 'run' ; hero_turn = 'right'
+        hero = hero
         vector[ 0 ] += hero_speed
-        hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-        heroimage = Image.open('персонажи/герой/' + str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
-        hero_x , hero_y = int(screen_width) / 2  - heroimage.width /2 , int(screen_height)  / 2 - heroimage.height / 2
+        hero_image =  pg.image.load( hero )
+        heroimage = Image.open(hero)
+        hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if keys[pg.K_d] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[0] <= 12_000 :
         hero_status = 'run' ; hero_turn = 'right'
         vector[ 0 ] += hero_speed
-        hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
-        heroimage = Image.open('персонажи/герой/' + str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+        hero = hero
+        hero_image =  pg.image.load( hero )
+        heroimage = Image.open(hero)
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width /2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if not( herojump ) :
         if keys[pg.K_w] and game_state == 'play' and camera.rect[1] >= 0:
             vector[ 1 ] -= hero_speed
-            heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+            hero_image =  pg.image.load( hero )
+            heroimage = Image.open(hero)
             hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
   
 
         if keys[pg.K_s] and game_state == 'play' and camera.rect[1] >= 0:
             vector[ 1 ] += hero_speed
-            heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+            #heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_' + str(hero_head)  + '_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+            hero_image =  pg.image.load( hero )
+            heroimage = Image.open(hero)
             hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
         if keys[pg.K_SPACE] and game_state == 'play':
@@ -344,7 +353,7 @@ while run :
             if show_buildings == 1:
                 pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
 
-        hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 1)
+        hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 2)
         pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
 
 
@@ -352,7 +361,7 @@ while run :
         mini_map_surf.fill((minimapBGcolor))
         map_scale += 0.1
         mini_map_surf.blit(cancel_icon.image , ( int(screen_width) / 3 - 25 , 0 ) )
-            
+        
         for i in range( len ( items_x_file1 ) ) :
             if show_items == 1:
                 pg.draw.rect(mini_map_surf , (0 , 255 , 0) , (int(items_x_file1[ i ]) / (100 * map_scale) , int(items_y_file1[ i ]) / (100 * map_scale) , 1 , 1 ))
@@ -360,9 +369,15 @@ while run :
         for i in range( len ( buildings_x_file1 ) ) :
             if show_buildings == 1:
                 pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
+        
+        hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 2)
+        
+        pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , int(map_scale))
 
-        hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 1)
-        pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
+
+
+
+        
 
     if keys [pg.K_ESCAPE]  and open_backpack == 1:
         open_backpack  = 0

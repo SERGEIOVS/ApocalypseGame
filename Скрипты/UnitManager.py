@@ -10,14 +10,18 @@ hero_armor , hero_max_armor = 10 , 10
 current_ammo = 10
 max_ammo = 30
 hero_gender = 'male'
+hero_head = 1
+hero_body = 0
+hero_legs = 0
+hero_boots = 0
 herolefthand = 'pistol'
 herorighthand = '0'
 hero_status = 'stay'
 hero_turn = 'left'
 hero_animation = 1
 
-hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
-
+hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' +'_'+ str(hero_head)  + '_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+# '_0_0_0_0_'
 
 
 heroimage = Image.open(hero)
