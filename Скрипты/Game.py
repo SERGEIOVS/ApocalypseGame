@@ -1,4 +1,5 @@
 #system/python modules
+from re import M
 from tkinter import RADIOBUTTON
 import pygame as pg , datetime , time , random , math , sys , pyautogui , pickle ; from PIL import Image ; import os ; import logging ; from cv2 import log
 
@@ -29,11 +30,13 @@ show_units = 0
 show_buildings = 1
 show_items = 1
 show_interface = 1
-open_backpack = 0
+open_backpack = 1
 game_state = game_states_list[0]
 bg_num = 2
 wallpapers_dir = os.listdir('wallpapers/')
 wallpaper = wallpapers_dir[bg_num]
+
+show_hero_stats = 1
 
 mini_map_surf = pg.Surface(( int(screen_width) / map_size , int(screen_height) / map_size ))
 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
@@ -46,13 +49,12 @@ def start():
     if game_state == 'main_menu':
         mouse_visible = False
         mouse_set_visible = pg.mouse.set_visible( mouse_visible )
-        
-        #screen.blit( wallpaper[0] ,      ( 0 , 0 ) )
-        screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 50 ) )
-        screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 100 ) )
-        screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 150 ) )
-        screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 200 ) )
-        screen.blit( button.image , ( int(screen_width) / 2  - button.width / 2 , 250 ) )
+
+        screen.blit( button.image , ( int(screen_width) / 2  , 50 ) )
+        screen.blit( button.image , ( int(screen_width) / 2  , 100 ) )
+        screen.blit( button.image , ( int(screen_width) / 2  , 150 ) )
+        screen.blit( button.image , ( int(screen_width) / 2  , 200 ) )
+        screen.blit( button.image , ( int(screen_width) / 2  , 250 ) )
 
     if game_state == 'play':
         mouse_visible = False
@@ -74,7 +76,6 @@ def start():
             screen.blit( traps_images_list[i] , ( -camera.rect[ 0 ] + int(traps_x_file1[ i ] ) , -camera.rect[ 1 ] + int(traps_x_file1[ i ] )  ) )  
 
 
-
         if open_backpack == 1:
             for i in range( len ( hero_belt_inventory_cells_x_list ) ) : 
                 screen.blit ( hero_belt_inventory_cells_images[ i ] , ( hero_belt_inventory_cells_x_list[ i ] ,  hero_belt_inventory_cells_y_list[ i ] ) )
@@ -89,17 +90,10 @@ def start():
                 screen.blit ( hero_backpack_inventory_images[ i ] , ( hero_backpack_inventory_items_x_list[ i ] ,  hero_backpack_inventory_items_y_list[ i ] ) )
 
         if show_interface == 1:
-                #screen.blit( achievements_menu.image , ( achievements_menu.x , achievements_menu.y ) )
-                screen.blit( armor_icon.image , ( armor_icon.x , armor_icon.y ) )
-                screen.blit( show_hero_armor , (armor_icon.x + armor_icon.width, armor_icon.y ) )
-                screen.blit( health_icon.image , (health_icon.x, health_icon.y ) )
-                screen.blit( show_health , ( health_icon.x + health_icon.width , beltinventorycell.y ) )
-                screen.blit( current_ammo_icon.image , (current_ammo_icon.x , current_ammo_icon.y ) )
-                screen.blit( current_ammo_counter , ( current_ammo_icon.x + current_ammo_icon.width , current_ammo_icon.y ) )
-                screen.blit( minimap_icon.image ,  ( 660 , 550 ))
-                screen.blit( radiation_icon.image , ( 0 , 500 ) )
-                screen.blit( show_radiation , ( 30 , 500 ) )
-
+                for i in Icons_list:
+                    if show_hero_stats == 1:
+                        screen.blit( i.image , ( i.x , i.y ) )
+                    
         screen.blit( hero_image , ( hero_x , hero_y ) )
 
         if show_map == 1:
@@ -114,8 +108,11 @@ def start():
             for i in range( len ( buildings_x_file1 ) ) :
                 if show_buildings == 1:
                     pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
-            marker = pg.draw.circle(mini_map_surf , ( 255 , 0 , 0 ) , (100 , 100 ) , 4)
-            hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , int(map_scale))
+
+            pg.draw.circle(mini_map_surf , ( 255 , 0 , 0 ) , (100   , 100 ) , 4 , 2)
+            pg.draw.circle(mini_map_surf , ( 0 , 255 , 0 ) , (114  , 30  ) , 4 , 1)
+
+            hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 1)
 
             pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
             
@@ -195,7 +192,8 @@ while run :
     keys = pg.key.get_pressed()
 
     if keys[pg.K_a] and game_state == 'play' and camera.rect[0] >= 0:
-        hero_status = 'run' ; hero_turn = 'left'
+        hero_status = 'run'
+        hero_turn = 'left'
         #hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
         hero = hero
         vector[ 0 ] -= hero_speed
@@ -204,7 +202,8 @@ while run :
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if keys[pg.K_a] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[0] >= 0 :
-        hero_status = 'run' ; hero_turn = 'left'
+        hero_status = 'run'
+        hero_turn = 'left'
         
         vector[ 0 ] -= hero_speed
         hero_image =  pg.image.load( hero )
@@ -224,7 +223,8 @@ while run :
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if keys[pg.K_d] and game_state == 'play' and camera.rect[0] <= 12_000:
-        hero_status = 'run' ; hero_turn = 'right'
+        hero_status = 'run'
+        hero_turn = 'right'
         hero = hero
         vector[ 0 ] += hero_speed
         hero_image =  pg.image.load( hero )
@@ -232,7 +232,8 @@ while run :
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
     if keys[pg.K_d] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[0] <= 12_000 :
-        hero_status = 'run' ; hero_turn = 'right'
+        hero_status = 'run'
+        hero_turn = 'right'
         vector[ 0 ] += hero_speed
         hero = hero
         hero_image =  pg.image.load( hero )
