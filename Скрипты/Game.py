@@ -2,7 +2,7 @@
 from re import M
 from tkinter import RADIOBUTTON
 import pygame as pg , datetime , time , random , math , sys , pyautogui , pickle ; from PIL import Image ; import os ; import logging ; from cv2 import log
-
+# += held_keys['w'] * car_speed*time.dt * math.cos(math.radians(car.rotation_z))
 #my custom  files
 from settings import * ; from MapController import * ; from BuildingsManager import * ; from UnitManager import * ; from Items import * ; from traps import * ;
 from SpawnFile import *  ; from VihiclesManager import * ; from PathManager import * ; from musicManager import * ;
