@@ -3,9 +3,10 @@ import logging
 logpaths = [
 
 'logs/info_log.txt',
-'logs/info_log.txt',
-'logs/info_log.txt',
-'logs/info_log.txt'
+'logs/debug_log.txt',
+'logs/warning_log.txt',
+'logs/critical_log.txt',
+'logs/error_log.txt',
 
 ]
 

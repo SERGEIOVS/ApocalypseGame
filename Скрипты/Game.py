@@ -66,8 +66,8 @@ def start():
         for i in range( len ( vihicles_x_file1 ) ) :
             screen.blit( vihicles_images_list[ i ] , ( -camera.rect[ 0 ] + int(vihicles_x_file1[ i ]) , -camera.rect[ 1 ] + int(vihicles_y_file1[ i ]) ) ) 
 
-        for i in range( len ( buildings_x_file1 ) ) :
-            screen.blit( buildings_images_list[ i ] , ( -camera.rect[ 0 ] + int(buildings_x_file1[ i ]) , -camera.rect[ 1 ] + int(buildings_y_file1[ i ] ) ))
+        for i in range( len ( buildings_file1 ) ) :
+            screen.blit( buildings_images_list[ i ] , ( -camera.rect[ 0 ] + int(buildings_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(buildings_file1[ i ].split(',')[1] ) ))
 
         for i in range(len(items_x_file1 ) ) :
             screen.blit(items_images_list[ i ] , ( -camera.rect[ 0 ] + int(items_x_file1[ i ]) , -camera.rect[ 1 ] + int(items_y_file1[ i ] ) ) ) 
@@ -105,9 +105,9 @@ def start():
                 if show_items == 1:
                     pg.draw.rect(mini_map_surf , (0 , 255 , 0) , (int(items_x_file1[ i ]) / (100 * map_scale) , int(items_y_file1[ i ]) / (100 * map_scale) , 1 , 1 ))
 
-            for i in range( len ( buildings_x_file1 ) ) :
+            for i in range( len ( buildings_file1 ) ) :
                 if show_buildings == 1:
-                    pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
+                    pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 , 10  ))
 
             pg.draw.circle(mini_map_surf , ( 255 , 0 , 0 ) , (100   , 100 ) , 4 , 2)
             pg.draw.circle(mini_map_surf , ( 0 , 255 , 0 ) , (114  , 30  ) , 4 , 1)
@@ -222,7 +222,7 @@ while run :
         heroimage = Image.open(hero)
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
-    if keys[pg.K_d] and game_state == 'play' and camera.rect[0] <= 12_000:
+    if keys[pg.K_d] and game_state == 'play' and camera.rect[0] <= map_width:
         hero_status = 'run'
         hero_turn = 'right'
         hero = hero
@@ -231,7 +231,7 @@ while run :
         heroimage = Image.open(hero)
         hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
-    if keys[pg.K_d] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[0] <= 12_000 :
+    if keys[pg.K_d] and keys[pg.K_LSHIFT] and game_state == 'play' and camera.rect[0] <= map_width :
         hero_status = 'run'
         hero_turn = 'right'
         vector[ 0 ] += hero_speed
@@ -350,9 +350,9 @@ while run :
             if show_items == 1:
                 pg.draw.rect(mini_map_surf , (0 , 255 , 0) , (int(items_x_file1[ i ]) / (100 * map_scale) , int(items_y_file1[ i ]) / (100 * map_scale) , 1 , 1 ))
 
-        for i in range( len ( buildings_x_file1 ) ) :
+        for i in range( len ( buildings_file1 ) ) :
             if show_buildings == 1:
-                pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
+                pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 , 10  ))
 
         hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 2)
         pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
@@ -367,9 +367,9 @@ while run :
             if show_items == 1:
                 pg.draw.rect(mini_map_surf , (0 , 255 , 0) , (int(items_x_file1[ i ]) / (100 * map_scale) , int(items_y_file1[ i ]) / (100 * map_scale) , 1 , 1 ))
 
-        for i in range( len ( buildings_x_file1 ) ) :
+        for i in range( len ( buildings_file1 ) ) :
             if show_buildings == 1:
-                pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_x_file1[ i ]) / (100 * map_scale) , int(buildings_y_file1[ i ]) / (100 * map_scale) ,  5 , 5  ))
+                pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 , 10  ))
         
         hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , (camera.rect[0] / (100 * map_scale) , camera.rect[1] / (100 * map_scale)) , 2)
         
