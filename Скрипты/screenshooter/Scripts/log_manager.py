@@ -1,0 +1,2 @@
+print('start logging')
+print()
