@@ -29,7 +29,7 @@ minimapBGcolor = colors[0]
 
 screen.fill(BGcolor)
 Captions = ['Welcome to the Crystal city!']
-pg.display.set_caption(Captions[0] )
+pg.display.set_caption(Captions[0])
 
 cells_num = 10
 radiation_level = 0

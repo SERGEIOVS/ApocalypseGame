@@ -9,23 +9,30 @@ from settings import *
 from Items import *
 from PIL import Image
 
-hero_speed = 3
-hero_health , hero_max_health = 10 , 10
+speed = 3
+health , max_health = 10 , 10
 hero_armor , hero_max_armor = 10 , 10
 current_ammo = 10
 max_ammo = 30
-hero_gender = 'male'
-hero_head = 5
-hero_body = 1
-hero_legs = 0
-hero_boots = 0
-herolefthand = 'pistol'
-herorighthand = '0'
-hero_status = 'stay'
-hero_turn = 'left'
-hero_animation = 1
 
-hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' +'_'+ str(hero_head)  + '_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+gender = 'male'
+hair = 'bold'
+mustache = 'no'
+beard = 'no'
+body = 'yellow tshirt'
+legs = 0
+boots = 0
+lefthand = 'pistol'
+righthand = '0'
+boots = 0
+lefthand = 'pistol'
+righthand = '0'
+state = 'stay'
+turn = 'left'
+animation = 1
+
+hero = 'персонажи/герой/'+ str(gender) + '/' + 'hero_' + 'no' +'_'+ str(hair)  + '_' + str(body) + '_' + str(legs) + '_' + str(boots) +'_' \
++  str(lefthand) + '_' + str(righthand) + '_' + str(state) + '_' + str(turn) + '_' + str(animation) + '.png'
 # '_0_0_0_0_'
 
 

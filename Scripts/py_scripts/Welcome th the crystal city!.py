@@ -341,6 +341,38 @@ while run :
             minimap_x = 0
             minimap_y = int(screen_height) - int(screen_height) / 3
 
+    if keys [pg.K_KP_8] :
+        minimap_location = 'left_up'
+        if minimap_location == 'left_up':
+            minimap_x = 0
+            minimap_y = 0
+        
+    if keys [pg.K_KP_6] :
+        minimap_location = 'right_up'
+        if minimap_location == 'right_up':
+            minimap_x = int(screen_width) - int(screen_width) / 3
+            minimap_y = 0
+    
+    if keys [pg.K_KP_4] :
+        minimap_location = 'right_down'
+        if minimap_location == 'right_down':
+            minimap_x = int(screen_width) - int(screen_width) / 3
+            minimap_y = int(screen_height) - int(screen_height) / 3
+    
+    if keys [pg.K_KP_2] :
+        minimap_location = 'left_down'
+        if minimap_location == 'left_down':
+            minimap_x = 0
+            minimap_y = int(screen_height) - int(screen_height) / 3
+
+    if keys [pg.K_KP_5] :
+        minimap_location = 'left_down'
+        if minimap_location == 'left_down':
+            minimap_x = 0
+            minimap_y = int(screen_height) - int(screen_height) / 3
+
+
+
     if keys [pg.K_KP_PLUS]:
         mini_map_surf.fill((minimapBGcolor))
         map_scale -= 0.1
