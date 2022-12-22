@@ -41,22 +41,22 @@ class interface :
         self.y = y
         self.image = image
 
-beltinventorycell = interface( int(screen_width  )/ 2 - cells_num * 50 / 2, int(screen_height  )- 50 , pg.image.load( 'интерфейс/иконки/inventory_cell.png' ) )
-backpackinventorycell = interface( 710 , 300 , pg.image.load( 'интерфейс/иконки/inventory_cell.png' ) )
-currentinventorycell = interface( int(screen_width) / 2 -cells_num * 25 , beltinventorycell.y , pg.image.load( 'интерфейс/иконки/current_inventory_cell.png' ) )
-cursor_icon = interface( 0 , 0  , pg.image.load( 'интерфейс/иконки/crosshair.png' ) )
-clock_icon = interface( 0 , 1200  , pg.image.load( 'интерфейс/иконки/clock_icon.png' ) )
-achievements_icon = interface( 0 , 325 , pg.image.load( 'интерфейс/иконки/achievements_icon.png' ) )
-health_icon = interface(0 , int(screen_height) - 50 , pg.image.load( 'интерфейс/иконки/health_icon.png' ) )
-armor_icon = interface( 0 , int(screen_height) - 25  , pg.image.load( 'интерфейс/иконки/armor_icon.png' ) )
-current_ammo_icon = interface(0 , int(screen_height) - 75  , pg.image.load( 'интерфейс/иконки/pistol_ammo_icon.png' ) )
-button = interface(2100 , 210 , pg.image.load( 'интерфейс/иконки/button.png' ) )
-MusicIcon = interface(0 , 100  , pg.image.load( 'интерфейс/иконки/MusicIcon.png' ) )
-craft_icon = interface( 0 , 450 , pg.image.load( 'интерфейс/иконки/craft_icon.png' ) )
-energy_icon = interface( 0 , 400 , pg.image.load( 'интерфейс/иконки/energy_icon.png' ) )
-cancel_icon = interface(0 , 25 , pg.image.load( 'интерфейс/иконки/cancel_icon.png' ) )
-minimap_icon = interface( int(screen_width) - 710 , 1030 , pg.image.load( 'интерфейс/иконки/minimap_icon.png' ) )
-radiation_icon = interface(0 , 500 , pg.image.load( 'интерфейс/иконки/bio_danger_icon_green.png' ) )
+beltinventorycell = interface( int(screen_width  )/ 2 - cells_num * 50 / 2, int(screen_height  )- 50 , pg.image.load( 'Img\Interface\иконки/inventory_cell.png' ) )
+backpackinventorycell = interface( 710 , 300 , pg.image.load( 'Img\Interface\иконки/inventory_cell.png' ) )
+currentinventorycell = interface( int(screen_width) / 2 -cells_num * 25 , beltinventorycell.y , pg.image.load( 'Img\Interface\иконки/current_inventory_cell.png' ) )
+cursor_icon = interface( 0 , 0  , pg.image.load( 'Img\Interface\иконки/crosshair.png' ) )
+clock_icon = interface( 0 , 1200  , pg.image.load( 'Img\Interface\иконки/clock_icon.png' ) )
+achievements_icon = interface( 0 , 325 , pg.image.load( 'Img\Interface\иконки/achievements_icon.png' ) )
+health_icon = interface(0 , int(screen_height) - 50 , pg.image.load( 'Img\Interface\иконки/health_icon.png' ) )
+armor_icon = interface( 0 , int(screen_height) - 25  , pg.image.load( 'Img\Interface\иконки/armor_icon.png' ) )
+current_ammo_icon = interface(0 , int(screen_height) - 75  , pg.image.load( 'Img\Interface\иконки/pistol_ammo_icon.png' ) )
+button = interface(2100 , 210 , pg.image.load( 'Img\Interface\иконки/button.png' ) )
+MusicIcon = interface(0 , 100  , pg.image.load( 'Img\Interface\иконки/MusicIcon.png' ) )
+craft_icon = interface( 0 , 450 , pg.image.load( 'Img\Interface\иконки/craft_icon.png' ) )
+energy_icon = interface( 0 , 400 , pg.image.load( 'Img\Interface\иконки/energy_icon.png' ) )
+cancel_icon = interface(0 , 25 , pg.image.load( 'Img\Interface\иконки/cancel_icon.png' ) )
+minimap_icon = interface( int(screen_width) - 710 , 1030 , pg.image.load( 'Img\Interface\иконки/minimap_icon.png' ) )
+radiation_icon = interface(0 , 500 , pg.image.load( 'Img\Interface\иконки/bio_danger_icon_green.png' ) )
 
 Icons_list = [
 
@@ -72,7 +72,7 @@ achievements_icon , achievements_icon , health_icon , armor_icon , current_ammo_
 ]
 
 
-pg.display.set_icon(pg.image.load('интерфейс/иконки/Game_icon.png') )
+pg.display.set_icon(pg.image.load('Img\Interface\иконки/Game_icon.png') )
 
 d1 = datetime.datetime.today()
 
@@ -115,7 +115,7 @@ hero_belt_inventory_cells_images = []
 
 for i in range( len ( hero_belt_inventory_cells_x_list ) ) :
     hero_belt_inventory_cells_y_list.append(int(screen_height) - 50)
-    hero_belt_inventory_cells_images.append(pg.image.load( 'интерфейс/иконки/inventory_cell.png' ))
+    hero_belt_inventory_cells_images.append(pg.image.load( 'Img\Interface\иконки/inventory_cell.png' ))
     i = interface( hero_belt_inventory_cells_x_list[ i ] , hero_belt_inventory_cells_y_list[ i ] ,hero_belt_inventory_cells_images[ i ] )
     hero_belt_inventory_cells.append( i )
 
@@ -131,10 +131,10 @@ hero_belt_inventory_items_y_list = []
 
 hero_belt_inventory_images = [
     
-pg.image.load( 'предметы/оружие/пистолеты/pistol_turned_right.png' ),
-pg.image.load( 'предметы/оружие/пистолеты/pistol_turned_right.png' ),
-pg.image.load( 'предметы/оружие/пистолеты/pistol_turned_right.png' ),
-pg.image.load( 'предметы/оружие/пистолеты/pistol_turned_right.png' )
+pg.image.load( 'Objects\Items\weapons\pistols/pistol_turned_right.png' ),
+pg.image.load( 'Objects\Items\weapons\pistols/pistol_turned_right.png' ),
+pg.image.load( 'Objects\Items\weapons\pistols/pistol_turned_right.png' ),
+pg.image.load( 'Objects\Items\weapons\pistols/pistol_turned_right.png' )
 ]
 
 for i in range( len ( hero_belt_inventory_items_x_list ) ) :
@@ -159,7 +159,7 @@ hero_backpack_inventory_cells_images = []
 
 for i in range( len ( hero_backpack_inventory_cells_x_list ) ) :
     hero_backpack_inventory_cells_y_list.append( int(screen_height) / 2 +100 )
-    hero_backpack_inventory_cells_images.append( pg.image.load( 'интерфейс/иконки/big_inventory_cell.png' ) )
+    hero_backpack_inventory_cells_images.append( pg.image.load( 'Img\Interface\иконки/big_inventory_cell.png' ) )
     i = interface( hero_backpack_inventory_cells_x_list[ i ] , hero_backpack_inventory_cells_y_list[ i ] , hero_backpack_inventory_cells_images[ i ] )
     hero_backpack_inventory_cells.append( i )
 
@@ -179,11 +179,11 @@ hero_backpack_inventory_items_y_list = []
 
 hero_backpack_inventory_images = [
 
-pg.image.load('интерфейс/иконки/cancel_icon.png') ,
-pg.image.load( 'предметы/оружие/machete/machete_turned_right.png' ) ,
-pg.image.load( 'предметы/инструменты/топор/axe_turned_right.png' ) ,
-pg.image.load( 'предметы/зажигалки/газовая_зажигалка.png' ) , 
-pg.image.load( 'предметы/фонарики/flashlight_turned_right.png' )
+pg.image.load('Img\Interface\иконки/cancel_icon.png') ,
+pg.image.load( 'Objects\Items\weapons\machete/machete_turned_right.png' ) ,
+pg.image.load( 'Objects\Items/tools/axes/axe_turned_right.png' ) ,
+pg.image.load( 'Objects\Items\lighters/gas_lighter.png' ) , 
+pg.image.load( 'Objects\Items/flashlights\white/flashlight_turned_right.png' )
 
 ]
 
@@ -210,7 +210,7 @@ hero_belt_inventory_cells_images = []
 
 for i in range( len ( hero_belt_inventory_cells_x_list ) ) :
     hero_belt_inventory_cells_y_list.append(int(screen_height) - 50)
-    hero_belt_inventory_cells_images.append(pg.image.load( 'интерфейс/иконки/inventory_cell.png' ))
+    hero_belt_inventory_cells_images.append(pg.image.load( 'Img\Interface\иконки/inventory_cell.png' ))
     i = interface( hero_belt_inventory_cells_x_list[ i ] , hero_belt_inventory_cells_y_list[ i ] ,hero_belt_inventory_cells_images[ i ] )
     hero_belt_inventory_cells.append( i )
 
@@ -218,7 +218,7 @@ hero_belt_inventory = []
 hero_belt_inventory_items_x_list = [
 int(screen_width) / 2 -cells_num * 50 / 2 + 20]
 hero_belt_inventory_items_y_list = []
-hero_belt_inventory_images = [ pg.image.load( 'предметы/оружие/пистолеты/pistol_turned_right.png' ) ]
+hero_belt_inventory_images = [ pg.image.load( 'Objects\Items\weapons/pistols/pistol_turned_right.png' ) ]
 
 for i in range( len ( hero_belt_inventory_items_x_list ) ) :
     hero_belt_inventory_items_y_list.append( int(screen_height) - 40 )

@@ -12,6 +12,8 @@ pg.init()
 pg.font.init()
 pos = pg.mouse.get_pos()
 
+
+
 game_states_list = [ 'main_menu' , 'play' , 'screenshots_menu' , 'achievements_menu' , 'mini_map' , 'saving' , 'loading' ]
 
 bg_images = [
@@ -39,6 +41,9 @@ wallpaper = wallpapers_dir[bg_num]
 show_hero_stats = 1
 
 mini_map_surf = pg.Surface(( int(screen_width) / map_size , int(screen_height) / map_size ))
+quests_surf = pg.Surface(( int(screen_width) - 200 , int(screen_height) / map_size ))
+
+
 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
 def make_screenshot() :
@@ -49,6 +54,10 @@ def start():
     if game_state == 'main_menu':
         mouse_visible = False
         mouse_set_visible = pg.mouse.set_visible( mouse_visible )
+
+        screen.blit(show_game_title , ( int(screen_width / 2 ) , 100 ) )
+        
+        screen.blit(show_game_version , ( int(screen_width / 2 ) , 150 ) )
 
         screen.blit( button.image , ( int(screen_width) / 2  , 50 ) )
         screen.blit( button.image , ( int(screen_width) / 2  , 100 ) )
@@ -117,6 +126,8 @@ def start():
             pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
             
             screen.blit(mini_map_surf , ( minimap_x , minimap_y ) )
+
+            
         
 herojump , herojumpcounter = False , 10 # запрет на прыжок , высота прыжка
 
