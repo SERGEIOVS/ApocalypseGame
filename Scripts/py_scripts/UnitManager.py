@@ -57,7 +57,7 @@ class Units:
         #self.health = health
         #self.speed = speed
         #self.turn = turn
-"""
+
 unitslist = []
 units_filename = 'txt/coords/units/units.txt'
 unitsfilemode = 'r'
@@ -119,7 +119,7 @@ for i in range( len ( units_file1 ) ) :
                #x                             y                              categoty                       status                         turn                           animation               
     i = Units( units_file1[i].split(',')[0] , units_file1[i].split(',')[1] , units_file1[i].split(',')[2] , units_file1[i].split(',')[3] , units_file1[i].split(',')[4] , units_file1[i].split(',')[5] , units_images_list[i] )
     unitslist.append( i )
-"""
+
 hero_speed = 3
 hero_health , hero_max_health = 10 , 10
 hero_armor , hero_max_armor = 10 , 10
@@ -161,7 +161,7 @@ class Units:
         #self.health = health
         #self.speed = speed
         #self.turn = turn
-"""
+
 unitslist = []
 units_filename = 'txt/coords/units/units.txt'
 unitsfilemode = 'r'
@@ -223,4 +223,3 @@ for i in range( len ( units_file1 ) ) :
                #x                             y                              categoty                       status                         turn                           animation               
     i = Units( units_file1[i].split(',')[0] , units_file1[i].split(',')[1] , units_file1[i].split(',')[2] , units_file1[i].split(',')[3] , units_file1[i].split(',')[4] , units_file1[i].split(',')[5] , units_images_list[i] )
     unitslist.append( i )
-"""

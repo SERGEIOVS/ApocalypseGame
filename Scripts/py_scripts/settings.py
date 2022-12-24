@@ -30,7 +30,7 @@ minimapBGcolor = colors[0]
 screen.fill(BGcolor)
 Captions = ['Welcome to the Crystal city!']
 pg.display.set_caption(Captions[0])
-
+"""
 cells_num = 10
 radiation_level = 0
 max_radiation_level = 100
@@ -73,7 +73,7 @@ achievements_icon , achievements_icon , health_icon , armor_icon , current_ammo_
 
 
 pg.display.set_icon(pg.image.load('Img\Interface\иконки/Game_icon.png') )
-
+"""
 d1 = datetime.datetime.today()
 
 d1 += datetime.timedelta( hours = 0 )
@@ -98,6 +98,7 @@ class cam :
 camera = cam( 0 , 0 )
 vector = [ 0 , 0 ]
 
+"""
 pistolmagazine_capacity = 30
 pistolmax_magazine_capacity = 300
 
@@ -223,4 +224,4 @@ hero_belt_inventory_images = [ pg.image.load( 'Objects\Items\weapons/pistols/pis
 for i in range( len ( hero_belt_inventory_items_x_list ) ) :
     hero_belt_inventory_items_y_list.append( int(screen_height) - 40 )
     i = interface( hero_belt_inventory_items_x_list[ i ] , hero_belt_inventory_items_y_list[ i ] , hero_belt_inventory_images[ i ] )
-    hero_belt_inventory.append( i )
+    hero_belt_inventory.append( i )"""

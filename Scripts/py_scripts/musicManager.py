@@ -1,6 +1,6 @@
 import pygame as pg
 import os
-ufo_sounds = os.listdir('Audio/Звуки/нло/')
+"""ufo_sounds = os.listdir('Audio/Звуки/нло/')
 
 soundtracks = os.listdir('Audio/Музыка/')
 
@@ -8,4 +8,4 @@ soundtracks = os.listdir('Audio/Музыка/')
 
 soundtrack = soundtracks[0]
 
-environmentsound = ufo_sounds[0]
+environmentsound = ufo_sounds[0]"""

@@ -26,59 +26,59 @@ items_y_file1 = items_y_file.readlines()
 
 items_images_list = [
 
-pg.image.load( 'предметы/оружие/патроны/pistol_ammo.png' ) ,
+pg.image.load( 'Objects\Items/weapons/ammo/pistol_ammo.png' ) ,
 
-pg.image.load( 'предметы/оружие/патроны/rifle_ammo.png' ) ,
+pg.image.load( 'Objects/Items/weapons/ammo/rifle_ammo.png' ) ,
 
-pg.image.load( 'предметы/инструменты/ящики для инструментов/ящик для инструментов.png' ) ,
+pg.image.load( 'Objects/Items/tools/toolboxes/ящик для инструментов.png' ) ,
 
-pg.image.load( 'предметы/аккумуляторы/аккумулятор_авто.png' ) ,
+pg.image.load( 'Objects/Items/аккумуляторы/аккумулятор_авто.png' ) ,
 
-pg.image.load( 'предметы/зажигалки/газовая_зажигалка.png' ) ,
+pg.image.load( 'Objects/Items/lighting/lighters//gas_lighter.png' ) ,
 
-pg.image.load( 'еда/консервы/консервы(рыба).png' ) ,
+pg.image.load( 'Objects\Items/food/консервы/консервы(рыба).png' ) ,
 
-pg.image.load( 'предметы/зажигалки/газовая_зажигалка.png' ) ,
+pg.image.load( 'Objects/Items/lighting/lighters//gas_lighter.png' ) ,
 
-pg.image.load( 'еда/сухпай_походный.png' ) ,
+pg.image.load( 'Objects\Items/food/сухпай_походный.png' ) ,
 
-pg.image.load( 'напитки/бутылка_воды.png' ) ,
+pg.image.load( 'Objects/Items/drinks/бутылка_воды.png' ) ,
 
-pg.image.load( 'предметы/фонарики/flashlight_turned_right.png' ) ,
-
-
-pg.image.load( 'предметы/инструменты/топор/axe_turned_right.png' ) ,
-
-pg.image.load( 'предметы/оружие/sniper_rifle.png' ) ,
-
-pg.image.load( 'предметы/оружие/пулемет.png' ),
-
-pg.image.load( 'предметы/оружие/патроны/pistol_ammo.png' ) ,
-
-pg.image.load( 'предметы/оружие/патроны/rifle_ammo.png' ) ,
-
-pg.image.load( 'предметы/инструменты/ящики для инструментов/ящик для инструментов.png' ) ,
-
-pg.image.load( 'предметы/аккумуляторы/аккумулятор_авто.png' ) ,
-
-pg.image.load( 'предметы/зажигалки/газовая_зажигалка.png' ) ,
-
-pg.image.load( 'еда/консервы/консервы(рыба).png' ) ,
-
-pg.image.load( 'предметы/зажигалки/газовая_зажигалка.png' ) ,
+pg.image.load( 'Objects/Items/фонарики/flashlight_turned_right.png' ) ,
 
 
-pg.image.load( 'еда/сухпай_походный.png' ) ,
+pg.image.load( 'Objects/Items/tools/топор/axe_turned_right.png' ) ,
 
-pg.image.load( 'напитки/бутылка_воды.png' ) ,
+pg.image.load( 'Objects/Items/weapons/sniper_rifle.png' ) ,
 
-pg.image.load( 'предметы/фонарики/flashlight_turned_right.png' ) ,
+pg.image.load( 'Objects/Items/weapons/пулемет.png' ),
 
-pg.image.load( 'предметы/инструменты/топор/axe_turned_right.png' ) ,
+pg.image.load( 'Objects/Items/weapons/ammo/pistol_ammo.png' ) ,
 
-pg.image.load( 'предметы/оружие/sniper_rifle.png' ) ,
+pg.image.load( 'Objects/Items/weapons/ammo/rifle_ammo.png' ) ,
 
-pg.image.load( 'предметы/оружие/пулемет.png' )
+pg.image.load( 'Objects/Items/tools/toolboxes/ящик для инструментов.png' ) ,
+
+pg.image.load( 'Objects/Items/аккумуляторы/аккумулятор_авто.png' ) ,
+
+pg.image.load( 'Objects/Items/lighting/lighters//gas_lighter.png' ) ,
+
+pg.image.load( 'Objects\Items/food/консервы/консервы(рыба).png' ) ,
+
+pg.image.load( 'Objects/Items/lighting/lighters//gas_lighter.png' ) ,
+
+
+pg.image.load( 'Objects/Items/food/сухпай_походный.png' ) ,
+
+pg.image.load( 'Objects/Items/drinks/бутылка_воды.png' ) ,
+
+pg.image.load( 'Objects/Items/фонарики/flashlight_turned_right.png' ) ,
+
+pg.image.load( 'Objects/Items/tools/топор/axe_turned_right.png' ) ,
+
+pg.image.load( 'Objects/Items/weapons/sniper_rifle.png' ) ,
+
+pg.image.load( 'Objects/Items/weapons/mg/пулемет.png' )
 
 ]
 
